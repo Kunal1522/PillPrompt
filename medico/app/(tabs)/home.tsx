@@ -33,12 +33,9 @@ function CircularProgress({
 }: CircularProgressProps) {
   const animatedValue = useRef(new Animated.Value(0)).current;
   const size = width * 0.55;
-
   const strokeWidth = 15;
   const radius = (size - strokeWidth) / 2;
-
   const circumference = 2 * Math.PI * radius;
-
   useEffect(() => {
     Animated.timing(animatedValue, {
       toValue: progress, //5
@@ -46,12 +43,10 @@ function CircularProgress({
       useNativeDriver: true,
     }).start();
   }, [progress]);
-
   const strokeDashoffset = animatedValue.interpolate({
     inputRange: [0, 1],
     outputRange: [circumference, 0],
   });
-
   return (
     <View style={styles.progressContainer}>
       <View style={styles.progressTextContainer}>
@@ -125,7 +120,6 @@ export default function HomeScreen() {
   // const [todaysMedications, setTodaysMedications] = useState<Medication[]>([]);
   // const [completedDoses, setCompletedDoses] = useState(0);
   // const [doseHistory, setDoseHistory] = useState<DoseHistory[]>([]);
-
   return (
     <SafeAreaView>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -195,7 +189,7 @@ export default function HomeScreen() {
               <Link href="/medications/add">
                 <TouchableOpacity style={styles.addMedicationButton}>
                   {" "}
-                  <Text style={styles.addMedicationButtonText}>
+                   <Text style={styles.addMedicationButtonText}>
                     Add Medication
                   </Text>
                 </TouchableOpacity>
@@ -233,7 +227,7 @@ export default function HomeScreen() {
                 </View>
               );
             })
-          )}
+          )}  
         </View>
         <Modal visible={false} transparent={true} animationType="slide">
           <View style={styles.modalOverlay}>
@@ -257,8 +251,7 @@ export default function HomeScreen() {
               </View>
             ))}
           </View>
-          </View>
-         
+          </View>     
         </Modal>
       </ScrollView>
     </SafeAreaView>
